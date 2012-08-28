@@ -1,0 +1,9 @@
+= form_for Pick.new, html: {class: "custom"} do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.label :group
+  = f.select :group_id, options_from_collection_for_select(@joined_groups, :id, :name)
+  = f.label :team
+  = f.select :team_id, options_from_collection_for_select(@all_available_teams, :id, :name)
+  = f.submit "Select", class: "primary button"
+
+= render :partial => 'picks/list'

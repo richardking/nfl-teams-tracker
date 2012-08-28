@@ -1,0 +1,30 @@
+.row
+  .columns.five
+    .login-box
+      .login-box-inner
+        %h2.betterHeadline Sign in
+
+        = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "validate-form pretty"}  do |f|
+          = devise_error_messages!
+          .cf
+            = f.label :email
+            .input
+              = f.email_field :email
+          .cf
+            = f.label :password
+            .input
+              = f.password_field :password
+          - if devise_mapping.rememberable?
+            .input
+              %ul.inputs-list
+                %li
+                  %label
+                    = f.check_box :remember_me
+                    %span
+                      Remember me
+          .actions
+            %button{:type => "submit", :class => "button primary"} Sign In
+
+.row
+  .columns.twelve
+    = render :partial => "devise/shared/links"

@@ -1,0 +1,22 @@
+.container#headerArea.show-on-desktops
+  .row
+    .twelve.columns
+      .left
+        =link_to "Home", user_path
+      .right
+        - if user_signed_in?
+          %center
+            .div
+              Logged in as
+              %strong= current_user.email
+            .div.top_5
+              = link_to 'Edit Profile', edit_user_registration_path
+              |
+              = link_to 'Edit Picks', edit_picks_path(current_user)
+              |
+              = link_to 'Log out', destroy_user_session_path, method: :delete
+          
+        - else
+          = link_to 'Sign up', new_user_registration_path
+          |
+          = link_to 'Login', new_user_session_path

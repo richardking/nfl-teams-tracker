@@ -1,0 +1,75 @@
+.cf:before,
+.cf:after { content:""; display:table; }
+.cf:after { clear:both; }
+.cf { zoom:1; }
+
+// Spacing Classes
+.top_5  {margin-top: 5px;}
+.top_10  {margin-top: 10px;}
+.top_20  {margin-top: 20px;}
+.top_30  {margin-top: 30px;}
+.top_40  {margin-top: 40px;}
+.top_50  {margin-top: 50px;}
+
+.bottom_0 { margin-bottom: 0px; }
+.bottom_10 {margin-bottom: 10px;}
+.bottom_20 {margin-bottom: 20px;}
+.bottom_30 {margin-bottom: 30px;}
+.bottom_40 {margin-bottom: 40px;}
+.bottom_40 {margin-bottom: 50px;}
+
+.margin_10 {margin:10px;}
+
+.left_10 { margin-left: 10px;}
+.left_20 { margin-left: 20px;}
+
+.right_10 { margin-right: 10px;}
+.right_15 { margin-right: 15px;}
+.right_20 { margin-right: 20px;}
+
+// Unordered List Classes
+.unstyled { margin: 0; padding: 0; list-style: none;}
+.no_bottom_margin { li { margin-bottom: 0;} }
+
+// Body Classes
+body {
+  //background: url('/assets/body_bg.png');
+  background: #eee;
+  overflow-x: hidden;
+  padding-top: 60px !important;
+}
+
+#contentArea {
+  .content_container_row {
+    background: white;
+    padding: 1em;
+    border: 1px solid #CCC;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+.selectedLink {
+  border-bottom: 1px solid #A54399;
+}
+
+// Common classes
+.is_hidden, .hidden, .pretty .hidden {display: none;}
+.invisible { visibility: hidden;  }
+.visible   { visibility: visible; }
+
+.fr {float:right;}
+.fl {float:left;}
+
+
+.tooltip {
+  background: none !important;
+}
+
+.reveal-modal-bg {
+  z-index: 99998;
+}
+.reveal-modal {
+  z-index: 99999;
+}

@@ -3,11 +3,13 @@ NflTeamsTracker::Application.routes.draw do
 
   root :to => "home#index"
 
-  get "/:id" => "users#show"
+  get "/:id" => "users#show", as: "user"
+  get "/leagues/:id/join" => "leagues#join", as: "join_league"
 
   resources :users
 
-  resources :groups do
+  resources :leagues do
+    resources :weeks
     member do
       resource :picks
     end

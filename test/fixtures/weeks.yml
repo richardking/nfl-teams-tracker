@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 1
-  league_id: 1
-  team_id: 1
+  deadline: 2012-08-28 09:38:15
 
 two:
-  user_id: 1
-  league_id: 1
-  team_id: 1
+  deadline: 2012-08-28 09:38:15

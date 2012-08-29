@@ -1,7 +1,14 @@
 - if user_signed_in?
-  %h1 Team
+  %h1 Leagues
 
-  = render :partial => 'picks/list'
+  - if @current_user_leagues.present?
+    %h2 current leagues
+    - @current_user_leagues.each do |league|
+      = link_to league.name, league_path(league)
+  %h2 all leagues
+  - @all_leagues.each do |league|
+    = league.name
+    = link_to "Join", join_league_path(league)
   
 - else
   = link_to 'Sign up', new_user_registration_path

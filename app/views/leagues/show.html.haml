@@ -1,0 +1,14 @@
+- if user_signed_in?
+  %h1 Members
+  = render :partial => 'members'
+
+  %h1 Your teams
+  = render :partial => 'picks/list'
+
+  %h1 Weeks
+  - Week.all.each do |week|
+    = link_to "Week #{week.id}", week_path(week)
+  
+- else
+  = link_to 'Sign up', new_user_registration_path
+  = link_to 'Login', new_user_session_path

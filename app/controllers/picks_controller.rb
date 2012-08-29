@@ -2,7 +2,7 @@ class PicksController < ApplicationController
 
   def edit
     @all_available_teams = Team.all - Team.picked(params[:id])
-    @joined_groups = current_user.groups
+    @joined_leagues = current_user.leagues
     @current_user_teams = current_user.find_teams(params[:id])
   end
 

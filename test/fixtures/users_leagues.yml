@@ -3,9 +3,7 @@
 one:
   user_id: 1
   league_id: 1
-  team_id: 1
 
 two:
   user_id: 1
   league_id: 1
-  team_id: 1

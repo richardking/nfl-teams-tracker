@@ -1,5 +1,9 @@
 class Team < ActiveRecord::Base
-  def self.picked(group_id)
-    Pick.all.select{|p| p.group_id == group_id}.map{|p| p.team}
+  def self.picked(league_id)
+    Pick.all.select{|p| p.league_id == league_id.to_i}.map{|p| p.team}
+  end
+
+  def full_name
+    "#{city} #{name}"
   end
 end

@@ -6,7 +6,7 @@
     %h1= "#{User.find(params[:user_id]).first_name}'s teams"
   -else
     %h1 Your teams
-  = link_to 'Edit Picks', edit_picks_path(params[:id]) unless @user != current_user
+  = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
   = render :partial => 'picks/list'
 
   = render :partial => 'weeks_overview'

@@ -8,8 +8,8 @@
     %tr
       %td
         - if current_user == u
-          = link_to "#{u.first_name}", league_path
+          = link_to "#{u.first_name} #{u.last_name}", league_path
         - else
-          = link_to "#{u.first_name}", league_path(user_id: u.id)
+          = link_to "#{u.first_name} #{u.last_name}", league_path(user_id: u.id)
       %td
       %td

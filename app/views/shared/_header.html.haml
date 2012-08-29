@@ -1,6 +1,6 @@
 .container#headerArea.show-on-desktops
   .row
-    .twelve.columns
+    .four.columns
       - if user_signed_in?
         .left
           %div
@@ -8,6 +8,11 @@
           - if params[:league_id]
             %div.top_5
               =link_to "Return to league home", league_path(params[:league_id])
+    .four.columns
+      %center
+        %h3.title ffb lite
+    .four.columns
+      - if user_signed_in?
         .right
           %center
             .div

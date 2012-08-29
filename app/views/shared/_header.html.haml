@@ -6,7 +6,7 @@
           %div
             =link_to "Back to Home", user_path(current_user)
           - if params[:league_id]
-            %div
+            %div.top_5
               =link_to "Return to league home", league_path(params[:league_id])
         .right
           %center
@@ -17,8 +17,8 @@
               = link_to 'Edit Profile', edit_user_registration_path
               |
               = link_to 'Log out', destroy_user_session_path, method: :delete
-      - else
-        .right
-          = link_to 'Sign up', new_user_registration_path
-          |
-          = link_to 'Login', new_user_session_path
+      / - else
+      /   .right
+      /     = link_to 'Sign up', new_user_registration_path
+      /     |
+      /     = link_to 'Login', new_user_session_path

@@ -13,11 +13,10 @@ class PicksController < ApplicationController
 
   def destroy
     @pick = Pick.find_by_user_id_and_team_id(params[:id], params[:team_id])
-    Rails.logger.debug @pick
     if @pick.destroy
-      redirect_to request.referrer, notice: "success!"
+      redirect_to request.referrer, flash: {success: "success!"}
     else
-      redirect_to request.referrer, notice: "failed"
+      redirect_to request.referrer, alert: "failed"
     end
   end
 end

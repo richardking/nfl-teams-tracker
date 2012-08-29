@@ -1,6 +1,6 @@
 %html
   %head
-    %title NFL Teams Tracker
+    %title FFB Lite
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -9,6 +9,18 @@
     = render partial: "shared/header"
     .row
       .columns.twelve
+        - if flash[:alert]
+          = content_tag :div, :id => "flash_name", :class => "alert-box alert" do
+            = flash[:alert]
+            %a.close{href:""} ×
+        - if flash[:success]
+          = content_tag :div, :id => "flash_name", :class => "alert-box success" do
+            = flash[:success]
+            %a.close{href:""} ×
+        - if flash[:notice]
+          = content_tag :div, :id => "flash_name", :class => "alert-box" do
+            = flash[:notice]
+            %a.close{href:""} ×
         = yield
         .top_50
           = debug(params) if Rails.env.development?

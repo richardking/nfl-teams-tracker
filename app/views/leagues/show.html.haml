@@ -3,9 +3,9 @@
   = render :partial => 'standings'
 
   - if params[:user_id]
-    %h1= "#{User.find(params[:user_id]).first_name}'s teams"
+    %h2= "#{User.find(params[:user_id]).first_name}'s teams"
   -else
-    %h1 Your teams
+    %h2 Your teams
   = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
   = render :partial => 'picks/list'
 

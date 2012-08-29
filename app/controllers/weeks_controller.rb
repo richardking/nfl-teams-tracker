@@ -1,7 +1,6 @@
 class WeeksController < ApplicationController
 
   def show
-    Rails.logger.debug params
     @starters = current_user.starters(params[:league_id], params[:id])
     @bench = current_user.bench(params[:league_id], params[:id])
     @current_user_picks = current_user.find_picks(params[:league_id])

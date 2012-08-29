@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Team.delete_all
+open("#{Rails.root}/db/seeds/teams.txt") do |teams|
+  teams.read.each_line do |team|
+    abbr, color, city, name = team.chomp.split(",")
+    Team.create!(:abbr => abbr, :color => color, :city => city, :name => name)
+  end
+end

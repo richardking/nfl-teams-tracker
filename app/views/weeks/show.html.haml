@@ -1,10 +1,15 @@
 %h1= "Week #{params[:id]}"
 = link_to "Edit lineup", edit_league_week_path(params[:league_id], params[:id])
 %h2 Starters
-
+%ul.unstyled
+  - @starters.each do |s|
+    %li= s.team.name
 %h2 Bench
+%ul.unstyled
+  - @bench.each do |b|
+    %li= b.team.name
 
 %h2 Your team
 %ul.unstyled
-  - @current_user_teams.each do |t|
-    %li= t.name
+  - @current_user_picks.each do |p|
+    %li= p.team.name

@@ -2,14 +2,19 @@
   %h1 Leagues
 
   - if @current_user_leagues.present?
-    %h2 current leagues
+    %h2 Your leagues
     - @current_user_leagues.each do |league|
       = link_to league.name, league_path(league)
-  %h2 all leagues
+  %h2 All leagues
   - @all_leagues.each do |league|
     = league.name
-    = link_to "Join", join_league_path(league)
+    = link_to "Join", join_league_path(league) unless @current_user_leagues.include?(league)
   
 - else
   = link_to 'Sign up', new_user_registration_path
   = link_to 'Login', new_user_session_path
+
+/ = link_to "Parse", "#", class: "parse_espn"
+
+
+%ul.placeholder.unstyled

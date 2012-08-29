@@ -1,0 +1,11 @@
+%h1 Weeks
+%table
+  %tr
+    %th Week number
+    %th Starters
+  - Week.all.each do |week|
+    %tr
+      %td
+        = link_to "Week #{week.num}", league_week_path(params[:id], week.num)
+      %td
+        = @user.starters(params[:id], week.num).count

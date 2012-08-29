@@ -4,9 +4,10 @@
       - if user_signed_in?
         .left
           %div
-            =link_to "Home", user_path(current_user)
-          %div
-            =link_to "Return to league home", league_path(params[:id])
+            =link_to "Back to Home", user_path(current_user)
+          - if params[:league_id]
+            %div
+              =link_to "Return to league home", league_path(params[:league_id])
         .right
           %center
             .div
@@ -14,8 +15,6 @@
               %strong= current_user.email
             .div.top_5
               = link_to 'Edit Profile', edit_user_registration_path
-              |
-              = link_to 'Edit Picks', edit_picks_path(params[:id])
               |
               = link_to 'Log out', destroy_user_session_path, method: :delete
       - else

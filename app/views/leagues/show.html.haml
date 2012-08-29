@@ -1,13 +1,15 @@
 - if user_signed_in?
-  %h1 Members
-  = render :partial => 'members'
+  
+  = render :partial => 'standings'
 
-  %h1 Your teams
+  - if params[:user_id]
+    %h1= "#{User.find(params[:user_id]).first_name}'s teams"
+  -else
+    %h1 Your teams
+  = link_to 'Edit Picks', edit_picks_path(params[:id]) unless @user != current_user
   = render :partial => 'picks/list'
 
-  %h1 Weeks
-  - Week.all.each do |week|
-    = link_to "Week #{week.id}", week_path(week)
+  = render :partial => 'weeks_overview'
   
 - else
   = link_to 'Sign up', new_user_registration_path

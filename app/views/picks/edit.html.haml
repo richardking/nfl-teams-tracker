@@ -1,3 +1,5 @@
+= link_to "Back to league home", league_path(params[:id])
+
 = form_for Pick.new, html: {class: "custom"} do |f|
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :league_id, value: params[:id]

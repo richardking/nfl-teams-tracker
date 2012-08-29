@@ -1,0 +1,32 @@
+ATL,000000,Atlanta,Falcons
+BUF,00133F,Buffalo,Bills
+CHI,00133F,Chicago,Bears
+CIN,FF2700,Cincinnati,Bengals
+CLE,4C230E,Cleveland,Browns
+DAL,002E4D,Dallas,Cowboys
+DEN,002E4D,Denver,Broncos
+DET,006EA1,Detroit,Lions
+GB,294239,Green Bay,Packers
+TEN,002C4B,Tennessee,Titans
+IND,00417E,Indianapolis,Colts
+KC,C60024,Kansas City,Chiefs
+OAK,000000,Oakland,Raiders
+STL,00295B,St. Louis,Rams
+MIA,006B79,Miami,Dolphins
+MIN,240A67,Minnesota,Vikings
+NE,00295B,New England,Patriots
+NO,C6A876,New Orleans,Saints
+NYG,003155,New York,Giants
+NYJ,174032,New York,Jets
+PHI,002F30,Philadelphia,Eagles
+ARI,B10339,Arizona,Cardinals
+PIT,000000,Pittsburgh,Steelers
+SD,05173C,San Diego,Chargers
+SF,940029,San Francisco,49ers
+SEA,030F1F,Seattle,Seahawks
+TB,665C50,Tampa Bay,Buccaneers
+WSH,8C001A,Washington,Redskins
+CAR,0097C6,Carolina,Panthers
+JAC,00839C,Jacksonville,Jaguars
+BAL,2B025B,Baltimore,Ravens
+HOU,00133F,Houston,Texans

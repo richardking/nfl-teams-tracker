@@ -9,7 +9,11 @@ NflTeamsTracker::Application.routes.draw do
   resources :users
 
   resources :leagues do
-    resources :weeks
+    resources :weeks do
+      member do
+        resource :weekly_actives
+      end
+    end
     member do
       resource :picks
     end

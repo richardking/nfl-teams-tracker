@@ -5,9 +5,13 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @current_user_teams = current_user.find_teams(params[:id])
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+    @current_user_teams = @user.find_teams(params[:id])
     @current_league_users = League.find(params[:id]).users
-    @all_teams_names = Team.all.each.map{|t| "#{t.city} #{t.name}"}
   end
 
   def join

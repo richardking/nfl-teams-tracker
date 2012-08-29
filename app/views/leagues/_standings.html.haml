@@ -1,0 +1,15 @@
+%h1 Standings
+%table
+  %tr
+    %th Name
+    %th W
+    %th L
+  - @current_league_users.each do |u|
+    %tr
+      %td
+        - if current_user == u
+          = link_to "#{u.first_name}", league_path
+        - else
+          = link_to "#{u.first_name}", league_path(user_id: u.id)
+      %td
+      %td

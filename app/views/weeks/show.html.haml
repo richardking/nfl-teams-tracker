@@ -1,5 +1,5 @@
 %h1= "Week #{params[:id]}"
-- unless params[:user_id]
+- if !params[:user_id] && params[:id].to_i == League.find_active_week
   = link_to "Edit lineup", edit_league_week_path(params[:league_id], params[:id])
 %h2 Starters
 %ul.unstyled

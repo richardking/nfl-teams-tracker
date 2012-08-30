@@ -1,0 +1,4 @@
+- if p.started?(params[:id])
+  = link_to "Starting", league_weekly_actives_path(weekly_active: p.weekly_active(params[:id])), method: :delete, class: "starting"
+- else
+  = link_to "On Bench", new_league_weekly_actives_path(params[:league_id], params[:id], pick_id: p.id, user_id: current_user.id), class: "benched"

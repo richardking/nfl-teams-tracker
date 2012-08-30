@@ -1,0 +1,23 @@
+.weeks.edit {
+  .opponent {
+    color: gray;
+  }
+  table {
+    td {
+      font-weight: 500;
+      .benched, .starting {
+        color: white;
+        padding: 0 2px;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .starting {
+        background-color: green;
+      }
+      .benched {
+        background-color: red;
+      }
+    }
+  }
+}

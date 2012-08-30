@@ -9,5 +9,11 @@ class WeeksController < ApplicationController
 
   def edit
     @current_user_picks = current_user.picks.find_all_by_league_id(params[:league_id])
+    @home_team_ids = Array.new
+    @away_team_ids = Array.new
+    Schedule.find_all_by_week_id(Week.find_by_num(params[:id])).each do |s|
+      @home_team_ids << s.home_team_id
+      @away_team_ids << s.away_team_id
+    end
   end
 end

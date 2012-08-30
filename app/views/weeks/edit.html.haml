@@ -1,12 +1,27 @@
-%h2 Your teams
 = link_to "Back", league_week_path(params[:league_id], params[:id])
-%ul.unstyled
-  - @current_user_picks.each do |p|
-    - if p.started?(params[:id])
-      %li.starter
-        = p.team.name
-        = link_to "Bench", league_weekly_actives_path(weekly_active: p.weekly_active(params[:id])), method: :delete
-    - else
-      %li.bench
-        = p.team.name
-        = link_to "Start", new_league_weekly_actives_path(params[:league_id], params[:id], pick_id: p.id, user_id: current_user.id)
+%h2 Your teams
+%table
+  %tr
+    %th Away
+    %th 
+    %th Home
+    - @current_user_picks.each do |p|
+      %tr
+        - if @home_team_ids.include?(p.team.id)
+          %td
+            = p.team.name
+            = render :partial => 'start_or_bench', locals: {p: p}
+          %td @
+          %td.opponent
+            = p.team.this_weeks_opponent(params[:id]).name
+        -elsif @away_team_ids.include?(p.team.id)
+          %td.opponent
+            = p.team.this_weeks_opponent(params[:id]).name
+          %td @
+          %td
+            = p.team.name
+            = render :partial => 'start_or_bench', locals: {p: p}
+        -else
+          %td = p.team.name
+          %td
+          %td BYE

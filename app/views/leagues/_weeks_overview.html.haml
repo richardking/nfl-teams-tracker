@@ -7,7 +7,10 @@
     %tr
       %td
         -if @active_week == week.num
-          = link_to "Week #{week.num}", league_week_path(params[:id], week.num)
+          -if params[:user_id]
+            = link_to "Week #{week.num}", league_week_path(params[:id], week.num, user_id: params[:user_id])
+          -else
+            = link_to "Week #{week.num}", league_week_path(params[:id], week.num)
         - else
           = "Week #{week.num}"
       %td

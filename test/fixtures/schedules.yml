@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gametime: 2012-08-29 16:50:36
+  week_id: 1
+  away_team_id: 1
+  home_team_id: 1
+
+two:
+  gametime: 2012-08-29 16:50:36
+  week_id: 1
+  away_team_id: 1
+  home_team_id: 1

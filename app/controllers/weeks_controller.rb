@@ -1,9 +1,10 @@
 class WeeksController < ApplicationController
 
   def show
-    @starters = current_user.starters(params[:league_id], params[:id])
-    @bench = current_user.bench(params[:league_id], params[:id])
-    @current_user_picks = current_user.find_picks(params[:league_id])
+    @user = User.find_by_id(params[:user_id]) || current_user
+    @starters = @user.starters(params[:league_id], params[:id])
+    @bench = @user.bench(params[:league_id], params[:id])
+    @user_picks = @user.find_picks(params[:league_id])
   end
 
   def edit

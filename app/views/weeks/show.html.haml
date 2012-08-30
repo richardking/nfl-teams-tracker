@@ -1,5 +1,6 @@
 %h1= "Week #{params[:id]}"
-= link_to "Edit lineup", edit_league_week_path(params[:league_id], params[:id])
+- unless params[:user_id]
+  = link_to "Edit lineup", edit_league_week_path(params[:league_id], params[:id])
 %h2 Starters
 %ul.unstyled
   - @starters.each do |s|
@@ -9,7 +10,8 @@
   - @bench.each do |b|
     %li= b.team.name
 
-%h2 Your team
+%h2
+  = params[:user_id] ? "#{@user.first_name}'s team" : "Your Team"
 %ul.unstyled
-  - @current_user_picks.each do |p|
+  - @user_picks.each do |p|
     %li= p.team.name

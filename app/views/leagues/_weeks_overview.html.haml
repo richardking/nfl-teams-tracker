@@ -6,7 +6,7 @@
   - Week.all.each do |week|
     %tr
       %td
-        -if @active_week == week.num
+        -if @active_week >= week.num
           -if params[:user_id]
             = link_to "Week #{week.num}", league_week_path(params[:id], week.num, user_id: params[:user_id])
           -else

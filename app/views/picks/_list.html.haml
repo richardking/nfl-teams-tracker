@@ -1,6 +1,10 @@
-%ul.unstyled
+%table
+  %tr
+    %th Team
+    %th Bye Week
   - @user_teams.each do |t|
-    %li
-      = "#{t.city} #{t.name}"
+    %tr
+      %td= "#{t.city} #{t.name}"
+      %td= t.bye_week
       %span.delete
         = link_to "Delete", {:controller => "picks", :action => "destroy", :id => current_user.id, :team_id => t.id}, method: :delete

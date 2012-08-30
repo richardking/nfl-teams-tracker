@@ -3,7 +3,7 @@ class PicksController < ApplicationController
   def edit
     @all_available_teams = Team.order(:city).all - Team.picked(params[:id])
     @joined_leagues = current_user.leagues
-    @current_user_teams = current_user.find_teams(params[:id])
+    @user_teams = current_user.find_teams(params[:id])
   end
 
   def create

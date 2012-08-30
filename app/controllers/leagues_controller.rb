@@ -6,12 +6,13 @@ class LeaguesController < ApplicationController
 
   def show
     @active_week = find_active_week
+    @this_weeks_games = Schedule.find_all_by_week_id(Week.find_by_num(@active_week))
     if params[:user_id]
       @user = User.find(params[:user_id])
     else
       @user = current_user
     end
-    @current_user_teams = @user.find_teams(params[:id])
+    @user_teams = @user.find_teams(params[:id])
     @current_league_users = League.find(params[:id]).users
   end
 

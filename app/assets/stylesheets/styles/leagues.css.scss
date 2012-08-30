@@ -1,4 +1,10 @@
 .leagues.show {
+  .current_user {
+    background: #00FFFF;
+  }
+  .owner {
+    background: yellow;
+  }
   .delete {
     display: none;
   }

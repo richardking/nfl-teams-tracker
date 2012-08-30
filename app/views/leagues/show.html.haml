@@ -1,7 +1,29 @@
 - if user_signed_in?
+  - unless params[:user_id]
+    .row
+      .columns.twelve
+        %h2= "Week #{@active_week} match-ups"
+        %table
+          %tr
+            %th Away
+            %th 
+            %th Home
+          - @this_weeks_games.each do |game|
+            %tr{:class => ("current_user" if (current_user.starters(params[:id], @active_week).map{|t| t.team_id} & [game.home_team_id, game.away_team_id]).present?)}
+              %td
+                - if WeeklyActive.league_week(params[:id], @active_week).map{|w| w.team.id}.include?(game.away_team.id)
+                  %span.owner
+                    = Pick.find_by_league_id_and_team_id(params[:id], game.away_team.id).try(:user).try(:first_name)
+                = game.away_team.full_name
+              %td @
+              %td
+                = game.home_team.full_name
+                - if WeeklyActive.league_week(params[:id], @active_week).map{|w| w.team.id}.include?(game.home_team.id)
+                  %span.owner
+                    = Pick.find_by_league_id_and_team_id(params[:id], game.home_team.id).try(:user).try(:first_name)
   .row
     .columns.four
-      = render :partial => 'standings'
+      = render :partial => 'weeks_overview'
     .columns.four
       - if params[:user_id]
         %h2= "#{User.find(params[:user_id]).first_name}'s teams"
@@ -10,7 +32,7 @@
       = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
       = render :partial => 'picks/list'
     .columns.four
-      = render :partial => 'weeks_overview'
+      = render :partial => 'standings'
   
 - else
   = link_to 'Sign up', new_user_registration_path

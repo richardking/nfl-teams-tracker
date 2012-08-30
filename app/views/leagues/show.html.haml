@@ -1,19 +1,16 @@
 - if user_signed_in?
   .row
     .columns.four
-      %center
-        = render :partial => 'standings'
+      = render :partial => 'standings'
     .columns.four
-      %center
-        - if params[:user_id]
-          %h2= "#{User.find(params[:user_id]).first_name}'s teams"
-        -else
-          %h2 Your teams
-        = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
-        = render :partial => 'picks/list'
+      - if params[:user_id]
+        %h2= "#{User.find(params[:user_id]).first_name}'s teams"
+      -else
+        %h2 Your teams
+      = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
+      = render :partial => 'picks/list'
     .columns.four
-      %center
-        = render :partial => 'weeks_overview'
+      = render :partial => 'weeks_overview'
   
 - else
   = link_to 'Sign up', new_user_registration_path

@@ -23,15 +23,20 @@
 #   end
 # end
 
-Schedule.delete_all
-open("#{Rails.root}/db/seeds/schedule.txt") do |schedule_all|
-  schedule_all.read.each_line do |schedule|
-    date, time, week, away, home = schedule.chomp.split(",")
-    gametime = DateTime.parse([date, time].join(' ').sub(%r_\A\s*(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})_.freeze){|m| "#$3-#$1-#$2"}) + 7.hours
-    week = week.first(11).gsub(/\D/,'').to_i
-    week_id = Week.find_by_num(week).id
-    away_team_id = Team.find_by_name(away.strip).id
-    home_team_id = Team.find_by_name(home.strip).id
-    Schedule.create!(gametime: gametime, week_id: week_id, away_team_id: away_team_id, home_team_id: home_team_id)
-  end
+# Schedule.delete_all
+# open("#{Rails.root}/db/seeds/schedule.txt") do |schedule_all|
+#   schedule_all.read.each_line do |schedule|
+#     date, time, week, away, home = schedule.chomp.split(",")
+#     gametime = DateTime.parse([date, time].join(' ').sub(%r_\A\s*(\d{1,2})/(\d{1,2})/(\d{4}|\d{2})_.freeze){|m| "#$3-#$1-#$2"}) + 7.hours
+#     week = week.first(11).gsub(/\D/,'').to_i
+#     week_id = Week.find_by_num(week).id
+#     away_team_id = Team.find_by_name(away.strip).id
+#     home_team_id = Team.find_by_name(home.strip).id
+#     Schedule.create!(gametime: gametime, week_id: week_id, away_team_id: away_team_id, home_team_id: home_team_id)
+#   end
+# end
+
+Week.all.each do |week|
+  time = ("Sept 10, 2012 9:00 PM").to_time + 7.hours + (7*(week.num-1)).days
+  week.update_attributes(end_of_week: time, year: 2012)
 end

@@ -2,7 +2,7 @@
   %tr
     %th Team
     %th Bye Week
-  - @user_teams.each do |t|
+  - @user_teams.sort_by(&:bye_week).each do |t|
     %tr
       %td= "#{t.city} #{t.name}"
       %td= t.bye_week

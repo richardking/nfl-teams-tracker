@@ -1,6 +1,21 @@
 .leagues.show {
-  .current_user {
-    background: #00FFFF;
+  .league_header {
+    display: inline-block;
+  }
+  .show_all {
+    cursor: pointer;
+    background-color: blue;
+    color:white;
+    margin-left:10px;
+    padding: 1px 2px;
+  }
+  .match_ups {
+    tr.all {
+      display: none;
+      &.current_user {
+        display: table-row;
+      }
+    }
   }
   .owner {
     background: yellow;

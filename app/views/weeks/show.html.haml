@@ -9,9 +9,3 @@
 %ul.unstyled
   - @bench.each do |b|
     %li= b.team.name
-
-%h2
-  = params[:user_id] ? "#{@user.first_name}'s team" : "Your Team"
-%ul.unstyled
-  - @user_picks.each do |p|
-    %li= p.team.name

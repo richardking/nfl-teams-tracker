@@ -18,6 +18,9 @@
       .benched {
         background-color: red;
       }
+      .locked .starting, .locked .benched {
+        background-color: gray;
+      }
     }
   }
 }

@@ -15,6 +15,15 @@ class Team < ActiveRecord::Base
     (a - (home_games.map{|g| Week.find(g.week_id).num} + away_games.map{|g| Week.find(g.week_id).num})).first
   end
 
+  def this_weeks_gametime(week_id)
+    schedule = Schedule.find_by_week_id_and_home_team_id(week_id, self.id) || Schedule.find_by_week_id_and_away_team_id(week_id, self.id)
+    schedule.gametime
+  end
+
+  def this_week_locked?(week_id)
+    this_weeks_gametime(week_id) - Time.now.utc < 600 ? true : false
+  end
+
   def this_weeks_opponent(week_id)
     schedule = Schedule.find_by_week_id_and_home_team_id(week_id, self.id) || Schedule.find_by_week_id_and_away_team_id(week_id, self.id)
     self == Team.find(schedule.home_team_id) ? Team.find(schedule.away_team_id) : Team.find(schedule.home_team_id)

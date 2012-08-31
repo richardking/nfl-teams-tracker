@@ -7,14 +7,14 @@
     %th Home
     - @current_user_picks.each do |p|
       %tr
-        - if @home_team_ids.include?(p.team.id)
+        - if @away_team_ids.include?(p.team.id)
           %td
             = p.team.name
             = render :partial => 'start_or_bench', locals: {p: p}
           %td @
           %td.opponent
             = p.team.this_weeks_opponent(params[:id]).name
-        -elsif @away_team_ids.include?(p.team.id)
+        -elsif @home_team_ids.include?(p.team.id)
           %td.opponent
             = p.team.this_weeks_opponent(params[:id]).name
           %td @

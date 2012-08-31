@@ -7,7 +7,7 @@ class League < ActiveRecord::Base
 
   def self.find_active_week
     Week.all.each_with_index do |w, index|
-      diff = w.early_deadline - Time.now
+      diff = w.end_of_week - Time.now
       return (index+1) if diff > 0
     end
   end

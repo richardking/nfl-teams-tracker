@@ -1,7 +1,5 @@
 class WeeklyActivesController < ApplicationController
 
-  before_filter :check_deadline
-
   def new
     if Pick.find(params[:pick_id]).team.this_week_locked?(params[:id])
       redirect_to request.referrer, alert: "Team is locked, game has already started"
@@ -24,9 +22,4 @@ class WeeklyActivesController < ApplicationController
     WeeklyActive.find(params[:weekly_active]).destroy
     redirect_to request.referrer, flash: { success: "Success!"}
   end
-
-  def check_deadline
-    redirect_to request.referrer, alert: "It's past this week's deadline to make roster updates" if (Week.find_by_num(params[:id]).early_deadline - Time.now < 0)
-  end
-
 end

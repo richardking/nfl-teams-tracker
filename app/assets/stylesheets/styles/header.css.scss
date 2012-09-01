@@ -1,5 +1,5 @@
 #headerArea {
-  background: #333 url(/bg-head.png) repeat-x -70% 0;
+  background: #333 url(/assets/bg-head.png) repeat-x -70% 0;
   border-bottom: 1px solid #eee;
   z-index: 10000;
   position: fixed;
@@ -9,7 +9,7 @@
   padding: 10px 0;
   height: 50px;
   color: white;
-  .title {
+  .logo {
     margin: 0;
   }
 }

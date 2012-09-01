@@ -19,7 +19,7 @@
 #   week_all.read.each_line do |week|
 #     num, datetime = week.chomp.split("|")
 #     deadline = DateTime.instance_eval(datetime)
-#     Week.create!(:num => num, :early_deadline => deadline)
+#     Week.create!(:num => num, :end_of_week => deadline)
 #   end
 # end
 

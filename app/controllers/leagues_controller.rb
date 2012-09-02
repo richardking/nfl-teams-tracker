@@ -17,8 +17,13 @@ class LeaguesController < ApplicationController
   end
 
   def join
-    current_user.users_leagues.create(league_id:params[:id])
-    redirect_to request.referrer
+    if League.find(params[:id]).users.count <= 6
+      current_user.users_leagues.create(league_id:params[:id])
+      league = League.find(params[:id])
+      redirect_to league_path(league), notice: "Joined #{league.name}"
+    else
+      redirect_to request.referrer, alert: "Max players reached for that league"
+    end
   end
 
 end

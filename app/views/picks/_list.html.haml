@@ -2,9 +2,10 @@
   %tr
     %th Team
     %th Bye Week
+    %th.delete
   - @user_teams.sort_by(&:bye_week).each do |t|
     %tr
       %td= "#{t.city} #{t.name}"
       %td= t.bye_week
-      %span.delete
+      %td.delete
         = link_to "Delete", {:controller => "picks", :action => "destroy", :id => current_user.id, :team_id => t.id}, method: :delete

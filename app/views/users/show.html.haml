@@ -6,9 +6,22 @@
     - @current_user_leagues.each do |league|
       = link_to league.name, league_path(league)
   %h2 All leagues
-  - @all_leagues.each do |league|
-    = league.name
-    = link_to "Join", join_league_path(league) unless @current_user_leagues.include?(league)
+  %table
+    %tr
+      %th League name
+      %th # players
+      %th
+    - @all_leagues.each do |league|
+      %tr
+        %td= league.name
+        %td= league.users.count
+        %td
+          -if @current_user_leagues.include?(league)
+            = "Joined"
+          -elsif league.users.count == 6 || league.name == "2012 Season"
+            Full
+          -else
+            = link_to "Join", join_league_path(league)
   
 - else
   = link_to 'Sign up', new_user_registration_path

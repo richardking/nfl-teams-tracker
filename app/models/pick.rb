@@ -1,8 +1,9 @@
 class Pick < ActiveRecord::Base
-  attr_accessible :user_id, :league_id, :team_id
+  attr_accessible :user_id, :league_id, :team_id, :users_league_id
 
   belongs_to :team
   belongs_to :user
+  belongs_to :users_league
 
   has_many :weekly_actives, :dependent => :destroy
 

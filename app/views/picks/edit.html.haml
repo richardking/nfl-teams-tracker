@@ -1,8 +1,7 @@
 = link_to "Back to league home", league_path(params[:id])
 
 = form_for Pick.new, html: {class: "custom"} do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :league_id, value: params[:id]
+  = f.hidden_field :users_league_id, value: UsersLeague.find_by_user_id_and_league_id(current_user.id, params[:id].to_i).id
   / = f.label :league
   / = f.select :league_id, options_from_collection_for_select(@joined_leagues, :id, :name)
   = f.label :team

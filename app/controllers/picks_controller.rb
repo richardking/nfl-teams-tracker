@@ -7,7 +7,7 @@ class PicksController < ApplicationController
   end
 
   def create
-    if Pick.find_by_user_id_and_league_id_and_team_id(params[:pick][:user_id], params[:pick][:league_id], params[:pick][:team_id])
+    if Pick.find_by_users_league_id(params[:users_league_id])
       redirect_to request.referrer, alert: "Team has been selected already!"
     else
       Pick.create(params[:pick])

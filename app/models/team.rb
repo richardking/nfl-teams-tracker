@@ -1,9 +1,10 @@
 class Team < ActiveRecord::Base
   has_many :home_games, :foreign_key => :home_team_id, :class_name => "Schedule"
   has_many :away_games, :foreign_key => :away_team_id, :class_name => "Schedule"
+  has_many :picks
 
   def self.picked(league_id)
-    Pick.all.select{|p| p.league_id == league_id.to_i}.map{|p| p.team}
+    League.find(league_id).users_leagues.map{|ul| ul.picks}.flatten.map{|p| p.team}
   end
 
   def full_name

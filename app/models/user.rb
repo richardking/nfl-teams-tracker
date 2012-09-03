@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-
-  has_many :picks, :dependent => :destroy
   has_many :teams, :through => :picks
   has_many :users_leagues, :dependent => :destroy
   has_many :leagues, :through => :users_leagues
@@ -18,11 +16,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :leagues
 
   def find_teams(league_id)
-    picks.select{|p| p.league_id == league_id.to_i}.map{|p| Team.find(p.team_id)}
+    UsersLeague.find_by_user_id_and_league_id(self.id, league_id).picks.map{|p| Team.find(p.team_id)}
   end
 
   def find_picks(league_id)
-    picks.select{|p| p.league_id == league_id.to_i}
+    UsersLeague.find_by_user_id_and_league_id(self.id, league_id).picks
   end
 
   def starters(league_id, week_id)

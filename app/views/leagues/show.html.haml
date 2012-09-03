@@ -25,7 +25,7 @@
                 %td
                   - if WeeklyActive.league_week(params[:id], @active_week).map{|w| w.team.id}.include?(game.away_team.id)
                     %span.owner
-                      = Pick.find_by_league_id_and_team_id(params[:id], game.away_team.id).try(:user).try(:first_name)
+                      = UsersLeague.find_all_by_id(@users_league_id).select{|ul| ul.picks.map(&:team_id).include?(game.away_team.id)}.first.try(:user).try(:first_name)
                 %td
                   = game.away_team.full_name
                 %td @
@@ -34,7 +34,7 @@
                 %td
                   - if WeeklyActive.league_week(params[:id], @active_week).map{|w| w.team.id}.include?(game.home_team.id)
                     %span.owner
-                      = Pick.find_by_league_id_and_team_id(params[:id], game.home_team.id).try(:user).try(:first_name)
+                      = UsersLeague.find_all_by_id(@users_league_id).select{|ul| ul.picks.map(&:team_id).include?(game.home_team.id)}.first.try(:user).try(:first_name)
                 %td=(game.gametime - 7.hours).strftime("%a") 
                 %td=(game.gametime - 7.hours).strftime("%I:%M %p")
   .row

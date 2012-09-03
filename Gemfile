@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+gem 'newrelic_rpm'
 gem 'thin'
 gem 'pg'
 # Bundle edge Rails instead:

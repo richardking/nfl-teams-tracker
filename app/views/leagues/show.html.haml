@@ -33,7 +33,7 @@
                   = game.home_team.full_name
                 %td
                   - if WeeklyActive.league_week(params[:id], @active_week).map{|w| w.team.id}.include?(game.home_team.id)
-                    %span.owner{ :class => ("owner" if game.home_team.picks.map{|p| p.users_league_id}.include?(@users_league.id))}
+                    %span{ :class => ("owner" if game.home_team.picks.map{|p| p.users_league_id}.include?(@users_league.id))}
                       = UsersLeague.find_all_by_league_id(params[:id]).select{|ul| ul.picks.map(&:team_id).include?(game.home_team.id)}.first.try(:user).try(:first_name)
                 %td=(game.gametime - 7.hours).strftime("%a") 
                 %td=(game.gametime - 7.hours).strftime("%I:%M %p")

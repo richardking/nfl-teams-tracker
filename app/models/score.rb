@@ -29,7 +29,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == away_team_id && !wa.processed
           wa.update_attribute(:processed, true)
-          wa.users_league.update_attribute(:wins, (wa.users_league.losses + 1))
+          wa.users_league.update_attribute(:losses, (wa.users_league.losses + 1))
         end
       end
     else
@@ -43,7 +43,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == home_team_id && !wa.processed
           wa.update_attribute(:processed, true)
-          wa.users_league.update_attribute(:wins, (wa.users_league.losses + 1))
+          wa.users_league.update_attribute(:losses, (wa.users_league.losses + 1))
         end
       end
       unless Schedule.find(self.schedule_id).processed

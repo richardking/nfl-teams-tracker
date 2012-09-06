@@ -4,7 +4,7 @@
     %th Name
     %th W
     %th L
-  - @current_users_leagues.each do |ul|
+  - @current_users_leagues.order('wins DESC').each do |ul|
     %tr
       %td
         - if current_user == ul.user

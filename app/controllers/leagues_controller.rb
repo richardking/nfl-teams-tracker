@@ -14,7 +14,7 @@ class LeaguesController < ApplicationController
       @user = current_user
     end
     @user_teams = @user.find_teams(params[:id])
-    @current_league_users = League.find(params[:id]).users
+    @current_users_leagues = League.find(params[:id]).users_leagues
   end
 
   def join

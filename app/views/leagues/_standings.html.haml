@@ -4,12 +4,12 @@
     %th Name
     %th W
     %th L
-  - @current_league_users.each do |u|
+  - @current_users_leagues.each do |ul|
     %tr
       %td
-        - if current_user == u
-          = link_to "#{u.first_name} #{u.last_name}", league_path
+        - if current_user == ul.user
+          = link_to "#{ul.user.first_name} #{ul.user.last_name}", league_path
         - else
-          = link_to "#{u.first_name} #{u.last_name}", league_path(user_id: u.id)
-      %td
-      %td
+          = link_to "#{ul.user.first_name} #{ul.user.last_name}", league_path(user_id: ul.user.id)
+      %td= ul.wins
+      %td= ul.losses

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906070103) do
+ActiveRecord::Schema.define(:version => 20120906074625) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,8 +73,9 @@ ActiveRecord::Schema.define(:version => 20120906070103) do
     t.integer  "week_id"
     t.integer  "away_team_id"
     t.integer  "home_team_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "processed",    :default => false
   end
 
   create_table "scores", :force => true do |t|
@@ -128,16 +129,17 @@ ActiveRecord::Schema.define(:version => 20120906070103) do
     t.integer  "league_id"
     t.integer  "pick_id"
     t.integer  "week_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "users_league_id"
+    t.boolean  "processed",       :default => false
   end
 
   create_table "weeks", :force => true do |t|
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "num"
-    t.integer  "year"
+    t.integer  "season"
     t.datetime "end_of_week"
   end
 

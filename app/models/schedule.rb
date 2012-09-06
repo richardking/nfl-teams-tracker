@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  attr_accessible :week_id, :gametime, :home_team_id, :away_team_id
+  attr_accessible :week_id, :gametime, :home_team_id, :away_team_id, :processed
 
   validates_presence_of :week_id, :gametime, :home_team_id, :away_team_id
 

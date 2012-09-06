@@ -38,5 +38,5 @@
 
 Week.all.each do |week|
   time = ("Sept 10, 2012 9:00 PM").to_time + 7.hours + (7*(week.num-1)).days
-  week.update_attributes(end_of_week: time, year: 2012)
+  week.update_attributes(end_of_week: time, season: 2012)
 end

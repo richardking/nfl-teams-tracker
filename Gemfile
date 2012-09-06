@@ -5,6 +5,7 @@ gem 'rails', '3.2.2'
 gem 'newrelic_rpm'
 gem 'thin'
 gem 'pg'
+gem 'activeadmin'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

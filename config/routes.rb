@@ -10,6 +10,8 @@ NflTeamsTracker::Application.routes.draw do
   get "/:id" => "users#show", as: "user"
   get "/leagues/:id/join" => "leagues#join", as: "join_league"
 
+  resources :scores
+
   resources :users
 
   resources :leagues do

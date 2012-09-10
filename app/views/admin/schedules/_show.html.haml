@@ -1,0 +1,15 @@
+.row
+  .columns.twelve
+    %table
+      %tr
+        %th= Team.find(@schedule.away_team_id).name
+        %th
+        %th= Team.find(@schedule.home_team_id).name
+        %th
+      = form_for @score do |f|
+        %tr
+          = f.hidden_field :schedule_id, value: @schedule.id
+          %td= f.text_field :away_team_score
+          %td
+          %td= f.text_field :home_team_score
+          %td= f.submit "Save"

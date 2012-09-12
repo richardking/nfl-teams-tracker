@@ -1,5 +1,13 @@
 class WeeksController < ApplicationController
 
+  def index
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
+  end
+
   def show
     @user = User.find_by_id(params[:user_id]) || current_user
     @starters = @user.starters(params[:league_id], params[:id])

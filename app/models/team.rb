@@ -9,12 +9,33 @@ class Team < ActiveRecord::Base
   end
 
   def full_name
-    "#{city} #{name}"
+    "#{city} #{name} (#{wins}-#{losses})"
   end
 
   def bye_week
     a = *(1..17)
     (a - (home_games.map{|g| Week.find(g.week_id).num} + away_games.map{|g| Week.find(g.week_id).num})).first
+  end
+
+  def week_results(week_id)
+    schedule = Schedule.find_by_week_id_and_home_team_id(week_id, self.id) || Schedule.find_by_week_id_and_away_team_id(week_id, self.id)
+    if score = Score.find_by_schedule_id(schedule.id)
+      if score.home_team_score > score.away_team_score && self.id == schedule.home_team_id
+        return "W"
+      elsif score.away_team_score > score.home_team_score && self.id == schedule.away_team_id
+        return "W"
+      else
+        return "L"
+      end
+    end
+  end
+
+  def wins
+    @wins ||= home_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).home_team_score > Score.find_by_schedule_id(g.id).away_team_score : false}.count + away_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).away_team_score > Score.find_by_schedule_id(g.id).home_team_score : false}.count
+  end
+
+  def losses
+    @losses ||= home_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).home_team_score < Score.find_by_schedule_id(g.id).away_team_score : false}.count + away_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).away_team_score < Score.find_by_schedule_id(g.id).home_team_score : false}.count
   end
 
   def this_weeks_gametime(week_id)

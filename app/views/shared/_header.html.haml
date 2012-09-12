@@ -1,29 +1,78 @@
-.container#headerArea.show-on-desktops
-  .row
-    .four.columns
-      - if user_signed_in?
-        .left
-          %div
-            =link_to "Back to Home", user_path(current_user)
-          - if params[:league_id]
-            %div.top_5
-              =link_to "Return to league home", league_path(params[:league_id])
-    .four.columns
-      %center
-        %h3.logo ffb lite
-    .four.columns
-      - if user_signed_in?
-        .right
-          %center
-            .div
-              Logged in as
-              %strong= current_user.email
-            .div.top_5
-              = link_to 'Edit Profile', edit_user_registration_path
-              |
-              = link_to 'Log out', destroy_user_session_path, method: :delete
-      / - else
-      /   .right
-      /     = link_to 'Sign up', new_user_registration_path
-      /     |
-      /     = link_to 'Login', new_user_session_path
+.container#headerArea
+  .left
+    %h3.logo FFB LITE
+  %ul.nav-bar.right
+    -if current_league
+      %li.active
+        = link_to league_path(current_league), style: "cursor: auto" do
+          League:
+          %span.league_name= current_league.name
+    / %li.has-flyout
+    /   %a{:href => "#"} Nav Item 2
+    /   %a.flyout-toggle{:href => "#"}
+    /     %span     
+    /   %ul.flyout{:style => "display: none; "}
+    /     %li
+    /       %a{:href => "#"} Sub Nav Item 1
+    /     %li
+    /       %a{:href => "#"} Sub Nav Item 2
+    /     %li
+    /       %a{:href => "#"} Sub Nav 3
+    /     %li
+    /       %a{:href => "#"} Sub Nav 4
+    /     %li
+    /       %a{:href => "#"} Sub Nav Item 5
+    - if current_league
+      %li.has-flyout
+        %a{:href => "#"}= "Current Week: #{active_week}"
+        %a.flyout-toggle{:href => "#"}
+          %span     
+        %div.flyout{:style => "display: none; color: #222"}
+          %h5 Current Starters:
+          - current_starters.each do |s|
+            %p= s.team.name
+          %p= link_to "Edit lineup", edit_league_week_path(current_league, active_week)
+          %p= link_to "View Previous Weeks", league_weeks_path(current_league)
+    %li.has-flyout
+      %a{:href => "#"}
+        - if user_signed_in?
+          = current_user.email
+
+      %a.flyout-toggle{:href => "#"}
+        %span
+      %ul.flyout{:style => "display: none; "}
+        -if current_league 
+          %li
+            = link_to 'Edit Teams', edit_picks_path(session[:current_league_id])
+        %li
+          = link_to 'Edit Profile', edit_user_registration_path
+        %li
+          = link_to 'Log out', destroy_user_session_path, method: :delete
+
+    / .four.columns
+    /   - if user_signed_in?
+    /     .left
+    /       %div
+    /         =link_to "Back to Home", user_path(current_user)
+    /       - if params[:league_id]
+    /         %div.top_5
+    /           =link_to "Return to league home", league_path(params[:league_id])
+    / .four.columns
+    /   %center
+    /     %h3.logo ffb lite
+    / .four.columns
+    /   - if user_signed_in?
+    /     .right
+    /       %center
+    /         .div
+    /           Logged in as
+    /           %strong= current_user.email
+    /         .div.top_5
+    /           = link_to 'Edit Profile', edit_user_registration_path
+    /           |
+    /           = link_to 'Log out', destroy_user_session_path, method: :delete
+    / - else
+    /   .right
+    /     = link_to 'Sign up', new_user_registration_path
+    /     |
+    /     = link_to 'Login', new_user_session_path

@@ -1,0 +1,17 @@
+= render :partial => 'weeks/lineup', locals: { week_games: Schedule.find_all_by_week_id(Week.find_by_num(2)), users_league: UsersLeague.find_by_user_id_and_league_id(current_user.id, current_league.id), week_id: 2 }
+
+%h2 Weeks
+%table
+  %tr
+    %th Week number
+    %th Starters
+  - Week.all.each do |week|
+    -if active_week >= week.num
+      %tr
+        %td
+          -if params[:user_id]
+            = link_to "Week #{week.num}", league_week_path(params[:id], week.num, user_id: params[:user_id])
+          -else
+            = link_to "Week #{week.num}", league_week_path(params[:id], week.num)
+        %td
+          = @user.starters(params[:id], week.num).count

@@ -37,17 +37,6 @@
                       = UsersLeague.find_all_by_league_id(params[:id]).select{|ul| ul.picks.map(&:team_id).include?(game.home_team.id)}.first.try(:user).try(:first_name)
                 %td=(game.gametime - 7.hours).strftime("%a") 
                 %td=(game.gametime - 7.hours).strftime("%I:%M %p")
-  .row
-    .columns.six
-      = render :partial => 'weeks_overview'
-    .columns.six
-      - if params[:user_id]
-        %h2= "#{User.find(params[:user_id]).first_name}'s teams"
-      -else
-        %h2 Your teams
-      = render :partial => 'picks/list'
-      - if @user == current_user
-        = link_to 'Edit Teams', edit_picks_path(params[:id]) unless @user != current_user
       
   
 - else

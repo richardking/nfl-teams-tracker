@@ -6,8 +6,10 @@
       .columns.nine
         %h2.league_header= "Your week #{@active_week} match-ups"
         %h2.league_header{style: "display: none"}= "All week #{@active_week} match-ups"
-        %span.show_all Show all
-        %span.show_all{style: "display:none"} Show only you
+        %span.left_10
+          =link_to "Show all", "#", class: "tiny secondary button upper show_all"
+        %span.left_10
+          =link_to "Show only you", "#", class: "tiny secondary button upper show_all", style: "display:none"
         - if current_user.find_teams(params[:id]).empty?
           %h3.subheader Add your teams to see matchups!
         - else
@@ -37,6 +39,19 @@
                       = UsersLeague.find_all_by_league_id(params[:id]).select{|ul| ul.picks.map(&:team_id).include?(game.home_team.id)}.first.try(:user).try(:first_name)
                 %td=(game.gametime - 7.hours).strftime("%a") 
                 %td=(game.gametime - 7.hours).strftime("%I:%M %p")
+  -else
+    %div= link_to "Back to League", league_path(current_league)
+    %h2= "#{@user.first_name}'s teams"
+    %table
+      %tr
+        %th Team
+        %th W
+        %th L
+      - @users_league.picks.each do |p|
+        %tr
+          %td= p.team.name
+          %td= p.team.wins(2012)
+          %td= p.team.losses(2012)
       
   
 - else

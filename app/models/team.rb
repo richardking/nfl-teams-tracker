@@ -4,12 +4,20 @@ class Team < ActiveRecord::Base
   has_many :picks
   has_many :records
 
+  def wins(season)
+    records.find_by_season(season).wins rescue 0
+  end
+
+  def losses(season)
+    records.find_by_season(season).losses rescue 0
+  end
+
   def self.picked(league_id)
     League.find(league_id).users_leagues.map{|ul| ul.picks}.flatten.map{|p| p.team}
   end
 
   def full_name
-    "#{city} #{name} (#{wins}-#{losses})"
+    "#{city} #{name} (#{wins(2012)}-#{losses(2012)})"
   end
 
   def bye_week
@@ -28,14 +36,6 @@ class Team < ActiveRecord::Base
         return "L"
       end
     end
-  end
-
-  def wins
-    @wins ||= home_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).home_team_score > Score.find_by_schedule_id(g.id).away_team_score : false}.count + away_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).away_team_score > Score.find_by_schedule_id(g.id).home_team_score : false}.count
-  end
-
-  def losses
-    @losses ||= home_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).home_team_score < Score.find_by_schedule_id(g.id).away_team_score : false}.count + away_games.select{|g| Score.find_by_schedule_id(g.id) ? Score.find_by_schedule_id(g.id).away_team_score < Score.find_by_schedule_id(g.id).home_team_score : false}.count
   end
 
   def this_weeks_gametime(week_id)

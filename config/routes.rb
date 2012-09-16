@@ -10,6 +10,7 @@ NflTeamsTracker::Application.routes.draw do
   get "/:id" => "users#show", as: "user"
   get "/leagues/:id/join" => "leagues#join", as: "join_league"
   get "/leagues/:id/weeks" => "weeks#index", as: "league_weeks"
+  get "/leagues/:id/parse" => "leagues#parse"
 
   resources :scores
 

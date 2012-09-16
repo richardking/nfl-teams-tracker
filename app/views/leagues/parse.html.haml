@@ -1,0 +1,12 @@
+.row
+  .columns.twelve
+    - @scores_entered.each do |score_id|
+      - score = Score.find(score_id)
+      %ul
+        %li= "#{score.schedule.away_team.name} #{score.away_team_score} - #{score.schedule.home_team.name} #{score.home_team_score}"
+.row
+  .columns.twelve
+    %h3 Errors
+    - @schedule_errors.each do |schedule_id|
+      %ul
+        %li= Schedule.find(schedule_id)

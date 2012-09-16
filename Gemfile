@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+gem 'feedzirra'
+
 gem 'newrelic_rpm'
 gem 'thin'
 gem 'pg'

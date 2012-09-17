@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require backbone-rails
+//= require hamlcoffee
 //= require foundation
 //= require foundation/app
+//= require './jquery.timeago.js'
+//= require_tree ./templates
+//= require_tree ./models
+//= require_tree ./views
 //= require_tree .

@@ -39,6 +39,15 @@
                       = UsersLeague.find_all_by_league_id(params[:id]).select{|ul| ul.picks.map(&:team_id).include?(game.home_team.id)}.first.try(:user).try(:first_name)
                 %td=(game.gametime - 7.hours).strftime("%a") 
                 %td=(game.gametime - 7.hours).strftime("%I:%M %p")
+    .row.top_10
+      .columns.six
+        %h2.betterHeadline= "Post a Comment"
+        %span#league_id{ value: current_league.id}
+        - if current_user.present?
+          %span#comment_user_id{ value: current_user.id }
+        - else
+          %span#comment_user_id{ value: 0 }
+        = content_tag "div", "Loading...", id: "comments_container", data: {entries: Comment.prepare_data(current_league.id)}
   -else
     %div= link_to "Back to League", league_path(current_league)
     %h2= "#{@user.first_name}'s teams"
@@ -57,3 +66,14 @@
 - else
   = link_to 'Sign up', new_user_registration_path
   = link_to 'Login', new_user_session_path
+
+- content_for :page_javascript do
+  :coffeescript
+    $ ->
+      @collection = new Comments()
+      @collection.reset($('#comments_container').data('entries'))
+      view       = new CommentsView(collection: @collection)
+      $('#comments_container').html(view.render().el)
+      $("abbr.timeago").timeago()
+      $('body').on('ajaxComplete', ->
+        $("abbr.timeago").timeago())

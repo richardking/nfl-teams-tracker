@@ -17,6 +17,7 @@ NflTeamsTracker::Application.routes.draw do
   resources :users
 
   resources :leagues do
+    resources :comments
     resources :weeks do
       member do
         resource :weekly_actives

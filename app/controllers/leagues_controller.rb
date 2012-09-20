@@ -58,12 +58,14 @@ class LeaguesController < ApplicationController
       Rails.logger.debug away_team_id
       Rails.logger.debug home_team_id
       schedule_id = Schedule.find_by_away_team_id_and_home_team_id(away_team_id, home_team_id).id
-      if score = Score.create(schedule_id: schedule_id, away_team_score: teams[1], home_team_score: teams[3])
-        Rails.logger.debug score
-        @scores_entered << score.id
-        Schedule.find(schedule_id).update_attribute(:processed, true)
-      else
-        @schedule_errors << schedule_id
+      unless Score.find_by_schedule_id(schedule_id)
+        if score = Score.create(schedule_id: schedule_id, away_team_score: teams[1], home_team_score: teams[3])
+          Rails.logger.debug score
+          @scores_entered << score.id
+          Schedule.find(schedule_id).update_attribute(:processed, true)
+        else
+          @schedule_errors << schedule_id
+        end
       end
     end
   end

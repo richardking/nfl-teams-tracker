@@ -1,6 +1,8 @@
 class Score < ActiveRecord::Base
   belongs_to :schedule
 
+  validates_uniqueness_of :schedule_id
+
   after_save :update_records
 
   protected

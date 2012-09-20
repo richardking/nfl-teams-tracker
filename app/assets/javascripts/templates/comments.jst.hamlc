@@ -1,0 +1,7 @@
+-if @cur_user == "0"
+  %a.button.secondary.small.left{:href => "/", :data => {:"reveal-id" => "loginModal", animationspeed: 100}, :style => "float:right;margin:10px 0px" } Login to post a comment
+-else
+  %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "/comments", :method => "post"}
+    %textarea#comment_body.comment_text_field{:cols => "50", :name => "comment[body]", :rows => "2"}
+    %input#submit_comment.button.secondary.small{:name => "commit", :type => "submit", :value => "Post", :style => "float:right;margin-bottom:10px"}
+%ul#commenttest

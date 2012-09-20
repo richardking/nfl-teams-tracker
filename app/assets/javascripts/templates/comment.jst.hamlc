@@ -1,0 +1,14 @@
+.row
+  .columns.twelve
+    %table{ style:"background:inherit;-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;margin: 0;border:none; width:100%"}
+      %tr
+        %td{ style:"padding:0;width:10%"}
+          %img{ src: "http://placehold.it/50x50", style:"width:50px;height:50px;border:1px solid #E6E6E6;padding:2px"}
+        %td{ style:"width:90%;padding:0px 0px 0px 9px"}
+          %div.cf
+            %span{style: "float:left"}
+              %a{href:"/#{@comment.get('user_id')}"}= @comment.get('first_name')
+            %span.right#time_ago
+              %abbr.timeago{ title: @comment.get('time_ago') }
+          %div= @comment.get('body')
+%hr.comment_divider

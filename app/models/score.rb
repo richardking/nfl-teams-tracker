@@ -1,6 +1,8 @@
 class Score < ActiveRecord::Base
   belongs_to :schedule
 
+  validates_uniqueness_of :schedule_id
+
   after_save :update_records
 
   protected
@@ -17,6 +19,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == home_team_id && !wa.processed
           wa.update_attribute(:processed, true)
+          wa.update_attribute(:win, true)
           wa.users_league.update_attribute(:wins, (wa.users_league.wins + 1))
         end
       end
@@ -29,6 +32,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == away_team_id && !wa.processed
           wa.update_attribute(:processed, true)
+          wa.update_attribute(:win, false)
           wa.users_league.update_attribute(:losses, (wa.users_league.losses + 1))
         end
       end
@@ -43,6 +47,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == home_team_id && !wa.processed
           wa.update_attribute(:processed, true)
+          wa.update_attribute(:win, false)
           wa.users_league.update_attribute(:losses, (wa.users_league.losses + 1))
         end
       end
@@ -55,6 +60,7 @@ class Score < ActiveRecord::Base
       WeeklyActive.find_all_by_week_id(self.schedule.week_id).each do |wa|
         if wa.pick.team.id == away_team_id && !wa.processed
           wa.update_attribute(:processed, true)
+          wa.update_attribute(:win, true)
           wa.users_league.update_attribute(:wins, (wa.users_league.wins + 1))
         end
       end

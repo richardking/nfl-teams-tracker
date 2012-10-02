@@ -3,6 +3,7 @@ class League < ActiveRecord::Base
 
   has_many :users_leagues
   has_many :users, :through => :users_leagues
+  has_many :comments, as: :commentable
 
 
   def self.find_active_week

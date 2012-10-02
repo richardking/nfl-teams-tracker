@@ -7,6 +7,7 @@ class LeaguesController < ApplicationController
   def show
     session[:current_league_id] = params[:id]
     @active_week = League.find_active_week
+    @previous_week_id = Week.find_by_num_and_season(@active_week - 1, 2012).id
     @this_weeks_games = Schedule.find_all_by_week_id(Week.find_by_num(@active_week))
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -58,12 +59,14 @@ class LeaguesController < ApplicationController
       Rails.logger.debug away_team_id
       Rails.logger.debug home_team_id
       schedule_id = Schedule.find_by_away_team_id_and_home_team_id(away_team_id, home_team_id).id
-      if score = Score.create(schedule_id: schedule_id, away_team_score: teams[1], home_team_score: teams[3])
-        Rails.logger.debug score
-        @scores_entered << score.id
-        Schedule.find(schedule_id).update_attribute(:processed, true)
-      else
-        @schedule_errors << schedule_id
+      unless Score.find_by_schedule_id(schedule_id)
+        if score = Score.create(schedule_id: schedule_id, away_team_score: teams[1], home_team_score: teams[3])
+          Rails.logger.debug score
+          @scores_entered << score.id
+          Schedule.find(schedule_id).update_attribute(:processed, true)
+        else
+          @schedule_errors << schedule_id
+        end
       end
     end
   end

@@ -1,9 +1,10 @@
-%h2 Standings
+%h3 Standings
 %table
   %tr
     %th Name
     %th W
     %th L
+    %th Last Wk
   - @current_users_leagues.order('wins DESC').each do |ul|
     %tr
       %td
@@ -13,3 +14,8 @@
           = link_to "#{ul.user.first_name} #{ul.user.last_name}", league_path(user_id: ul.user.id)
       %td= ul.wins
       %td= ul.losses
+      %td{style:"text-align:center"}
+        - if ul.wins_in_week(@previous_week_id) < 2
+          = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}", class: "has-tip tip-right", title: "LOL"
+        - else
+          = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}"

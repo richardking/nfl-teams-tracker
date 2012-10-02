@@ -33,46 +33,19 @@
             %p= s.team.name
           %p= link_to "Edit lineup", edit_league_week_path(current_league, active_week)
           %p= link_to "View Previous Weeks", league_weeks_path(current_league)
-    %li.has-flyout
-      %a{:href => "#"}
-        - if user_signed_in?
-          = current_user.email
+    - if current_user
+      %li.has-flyout
+        %a{:href => "#"}
+          - if user_signed_in?
+            = current_user.email
 
-      %a.flyout-toggle{:href => "#"}
-        %span
-      %ul.flyout{:style => "display: none; "}
-        -if current_league 
+        %a.flyout-toggle{:href => "#"}
+          %span
+        %ul.flyout{:style => "display: none; "}
+          -if current_league 
+            %li
+              = link_to 'Edit Teams', edit_picks_path(session[:current_league_id])
           %li
-            = link_to 'Edit Teams', edit_picks_path(session[:current_league_id])
-        %li
-          = link_to 'Edit Profile', edit_user_registration_path
-        %li
-          = link_to 'Log out', destroy_user_session_path, method: :delete
-
-    / .four.columns
-    /   - if user_signed_in?
-    /     .left
-    /       %div
-    /         =link_to "Back to Home", user_path(current_user)
-    /       - if params[:league_id]
-    /         %div.top_5
-    /           =link_to "Return to league home", league_path(params[:league_id])
-    / .four.columns
-    /   %center
-    /     %h3.logo ffb lite
-    / .four.columns
-    /   - if user_signed_in?
-    /     .right
-    /       %center
-    /         .div
-    /           Logged in as
-    /           %strong= current_user.email
-    /         .div.top_5
-    /           = link_to 'Edit Profile', edit_user_registration_path
-    /           |
-    /           = link_to 'Log out', destroy_user_session_path, method: :delete
-    / - else
-    /   .right
-    /     = link_to 'Sign up', new_user_registration_path
-    /     |
-    /     = link_to 'Login', new_user_session_path
+            = link_to 'Edit Profile', edit_user_registration_path
+          %li
+            = link_to 'Log out', destroy_user_session_path, method: :delete

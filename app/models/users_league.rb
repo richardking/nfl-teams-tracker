@@ -14,4 +14,8 @@ class UsersLeague < ActiveRecord::Base
   def losses_in_week(week_id)
     weekly_actives.where("week_id = #{week_id} AND win = false").count
   end
+
+  def current_rank
+    league.users_leagues.sort_by(&:wins).reverse.map(&:id).index(id)
+  end
 end

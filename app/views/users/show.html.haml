@@ -1,11 +1,21 @@
 - if user_signed_in?
-  %h1 Leagues
+  %h2 Leagues
 
   - if @current_user_leagues.present?
-    %h2 Your leagues
-    - @current_user_leagues.each do |league|
-      = link_to league.name, league_path(league)
-  %h2 All leagues
+    %h3 Your leagues
+    %table
+      %tr
+        %th League name
+        %th Rank
+      - @current_user_leagues.each do |league|
+        %tr
+          %td
+            = link_to league.name, league_path(league)
+          %td
+            = (UsersLeague.find_by_user_id_and_league_id(current_user.id, league.id).current_rank + 1)
+            of
+            = league.users.count
+  %h3 All leagues
   %table
     %tr
       %th League name

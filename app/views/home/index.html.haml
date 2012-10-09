@@ -1,5 +1,10 @@
 .row
   .columns.twelve
-    %center.top_40
+    .tc.top_20
+      %h5#login-announcement
+        Create a new account, or use
+        %span.bold test@example.com/password
+        to login.
+    .tc.top_40
       = link_to 'Sign up', new_user_registration_path, class: "primary button"
       = link_to 'Login', new_user_session_path, class: "primary button"

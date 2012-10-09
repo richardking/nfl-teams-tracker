@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :leagues
 
   def find_teams(league_id)
-    UsersLeague.find_by_user_id_and_league_id(self.id, league_id).picks.map{|p| Team.find(p.team_id)}
+    ul = UsersLeague.find_by_user_id_and_league_id(self.id, league_id)
+    ul.picks.map{|p| Team.find(p.team_id)} if ul.picks
   end
 
   def find_picks(league_id)

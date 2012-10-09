@@ -5,7 +5,7 @@ class UsersLeague < ActiveRecord::Base
 
   has_many :picks, :dependent => :destroy
 
-  attr_accessible :wins, :losses
+  attr_accessible :wins, :losses, :league_id
 
   def wins_in_week(week_id)
     weekly_actives.where("week_id = #{week_id} AND win = true").count

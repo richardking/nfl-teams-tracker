@@ -29,9 +29,13 @@
           %span     
         %div.flyout{:style => "display: none; color: #222"}
           %h5 Current Starters:
-          - current_starters.each do |s|
-            %p= s.team.name
-          %p= link_to "Edit lineup", edit_league_week_path(current_league, active_week)
+          -if current_starters.present?
+            - current_starters.each do |s|
+              %p= s.team.name
+          -else
+            None - click edit lineup
+          %hr{style: "margin: 0 0 20px"}
+          %p{style:"font-weight: 800"}= link_to "Edit lineup", edit_league_week_path(current_league, active_week)
           %p= link_to "View Previous Weeks", league_weeks_path(current_league)
     - if current_user
       %li.has-flyout
@@ -44,7 +48,7 @@
         %ul.flyout{:style => "display: none; "}
           -if current_league 
             %li
-              = link_to 'Edit Teams', edit_picks_path(session[:current_league_id])
+              = link_to 'Add/Remove Teams', edit_picks_path(session[:current_league_id])
           %li
             = link_to 'Edit Profile', edit_user_registration_path
           %li

@@ -11,6 +11,7 @@ class League < ActiveRecord::Base
       diff = w.end_of_week - Time.now
       return (index+1) if diff > 0
     end
+    return 17
   end
 
 end

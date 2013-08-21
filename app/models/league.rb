@@ -6,12 +6,12 @@ class League < ActiveRecord::Base
   has_many :comments, as: :commentable
 
 
-  def self.find_active_week
+  def self.find_active_week_id
     Week.where(:season => 2013).each_with_index do |w, index|
       diff = w.end_of_week - Time.now
-      return (index+1) if diff > 0
+      return w.id
     end
-    return 17
+    return Week.where(:season => 2013, :num => 17).id
   end
 
 end

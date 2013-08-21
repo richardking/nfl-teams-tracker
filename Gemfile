@@ -12,7 +12,7 @@ gem 'activeadmin'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'mysql', '~> 2.8.1'
 end
 
 
@@ -35,6 +35,7 @@ end
 gem 'jquery-rails'
 
 gem 'coffee-filter'
+gem 'httparty'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

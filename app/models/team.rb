@@ -17,7 +17,7 @@ class Team < ActiveRecord::Base
   end
 
   def full_name
-    "#{city} #{name} (#{wins(2012)}-#{losses(2012)})"
+    "#{city} #{name} (#{wins(2013)}-#{losses(2013)})"
   end
 
   def bye_week

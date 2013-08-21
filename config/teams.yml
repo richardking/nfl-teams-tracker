@@ -1,0 +1,289 @@
+---
+- !ruby/object:Team
+  attributes:
+    id: 1
+    city: Atlanta
+    name: Falcons
+    created_at: 2012-08-29 05:59:08.146132 Z
+    updated_at: 2012-08-29 05:59:08.146132 Z
+    color: "000000"
+    abbr: ATL
+- !ruby/object:Team
+  attributes:
+    id: 2
+    city: Buffalo
+    name: Bills
+    created_at: 2012-08-29 05:59:08.180877 Z
+    updated_at: 2012-08-29 05:59:08.180877 Z
+    color: 00133F
+    abbr: BUF
+- !ruby/object:Team
+  attributes:
+    id: 3
+    city: Chicago
+    name: Bears
+    created_at: 2012-08-29 05:59:08.191472 Z
+    updated_at: 2012-08-29 05:59:08.191472 Z
+    color: 00133F
+    abbr: CHI
+- !ruby/object:Team
+  attributes:
+    id: 4
+    city: Cincinnati
+    name: Bengals
+    created_at: 2012-08-29 05:59:08.204300 Z
+    updated_at: 2012-08-29 05:59:08.204300 Z
+    color: FF2700
+    abbr: CIN
+- !ruby/object:Team
+  attributes:
+    id: 5
+    city: Cleveland
+    name: Browns
+    created_at: 2012-08-29 05:59:08.214046 Z
+    updated_at: 2012-08-29 05:59:08.214046 Z
+    color: 4C230E
+    abbr: CLE
+- !ruby/object:Team
+  attributes:
+    id: 6
+    city: Dallas
+    name: Cowboys
+    created_at: 2012-08-29 05:59:08.229001 Z
+    updated_at: 2012-08-29 05:59:08.229001 Z
+    color: 002E4D
+    abbr: DAL
+- !ruby/object:Team
+  attributes:
+    id: 7
+    city: Denver
+    name: Broncos
+    created_at: 2012-08-29 05:59:08.242040 Z
+    updated_at: 2012-08-29 05:59:08.242040 Z
+    color: 002E4D
+    abbr: DEN
+- !ruby/object:Team
+  attributes:
+    id: 8
+    city: Detroit
+    name: Lions
+    created_at: 2012-08-29 05:59:08.310781 Z
+    updated_at: 2012-08-29 05:59:08.310781 Z
+    color: 006EA1
+    abbr: DET
+- !ruby/object:Team
+  attributes:
+    id: 9
+    city: Green Bay
+    name: Packers
+    created_at: 2012-08-29 05:59:08.323602 Z
+    updated_at: 2012-08-29 05:59:08.323602 Z
+    color: "294239"
+    abbr: GB
+- !ruby/object:Team
+  attributes:
+    id: 10
+    city: Tennessee
+    name: Titans
+    created_at: 2012-08-29 05:59:08.333528 Z
+    updated_at: 2012-08-29 05:59:08.333528 Z
+    color: 002C4B
+    abbr: TEN
+- !ruby/object:Team
+  attributes:
+    id: 11
+    city: Indianapolis
+    name: Colts
+    created_at: 2012-08-29 05:59:08.344131 Z
+    updated_at: 2012-08-29 05:59:08.344131 Z
+    color: 00417E
+    abbr: IND
+- !ruby/object:Team
+  attributes:
+    id: 12
+    city: Kansas City
+    name: Chiefs
+    created_at: 2012-08-29 05:59:08.353669 Z
+    updated_at: 2012-08-29 05:59:08.353669 Z
+    color: C60024
+    abbr: KC
+- !ruby/object:Team
+  attributes:
+    id: 13
+    city: Oakland
+    name: Raiders
+    created_at: 2012-08-29 05:59:08.362328 Z
+    updated_at: 2012-08-29 05:59:08.362328 Z
+    color: "000000"
+    abbr: OAK
+- !ruby/object:Team
+  attributes:
+    id: 14
+    city: St. Louis
+    name: Rams
+    created_at: 2012-08-29 05:59:08.371260 Z
+    updated_at: 2012-08-29 05:59:08.371260 Z
+    color: 00295B
+    abbr: STL
+- !ruby/object:Team
+  attributes:
+    id: 15
+    city: Miami
+    name: Dolphins
+    created_at: 2012-08-29 05:59:08.379858 Z
+    updated_at: 2012-08-29 05:59:08.379858 Z
+    color: 006B79
+    abbr: MIA
+- !ruby/object:Team
+  attributes:
+    id: 16
+    city: Minnesota
+    name: Vikings
+    created_at: 2012-08-29 05:59:08.424726 Z
+    updated_at: 2012-08-29 05:59:08.424726 Z
+    color: 240A67
+    abbr: MIN
+- !ruby/object:Team
+  attributes:
+    id: 17
+    city: New England
+    name: Patriots
+    created_at: 2012-08-29 05:59:08.433592 Z
+    updated_at: 2012-08-29 05:59:08.433592 Z
+    color: 00295B
+    abbr: NE
+- !ruby/object:Team
+  attributes:
+    id: 18
+    city: New Orleans
+    name: Saints
+    created_at: 2012-08-29 05:59:08.442852 Z
+    updated_at: 2012-08-29 05:59:08.442852 Z
+    color: C6A876
+    abbr: "NO"
+- !ruby/object:Team
+  attributes:
+    id: 19
+    city: New York
+    name: Giants
+    created_at: 2012-08-29 05:59:08.451343 Z
+    updated_at: 2012-08-29 05:59:08.451343 Z
+    color: "003155"
+    abbr: NYG
+- !ruby/object:Team
+  attributes:
+    id: 20
+    city: New York
+    name: Jets
+    created_at: 2012-08-29 05:59:08.467269 Z
+    updated_at: 2012-08-29 05:59:08.467269 Z
+    color: "174032"
+    abbr: NYJ
+- !ruby/object:Team
+  attributes:
+    id: 21
+    city: Philadelphia
+    name: Eagles
+    created_at: 2012-08-29 05:59:08.482925 Z
+    updated_at: 2012-08-29 05:59:08.482925 Z
+    color: 002F30
+    abbr: PHI
+- !ruby/object:Team
+  attributes:
+    id: 22
+    city: Arizona
+    name: Cardinals
+    created_at: 2012-08-29 05:59:08.494003 Z
+    updated_at: 2012-08-29 05:59:08.494003 Z
+    color: B10339
+    abbr: ARI
+- !ruby/object:Team
+  attributes:
+    id: 23
+    city: Pittsburgh
+    name: Steelers
+    created_at: 2012-08-29 05:59:08.504349 Z
+    updated_at: 2012-08-29 05:59:08.504349 Z
+    color: "000000"
+    abbr: PIT
+- !ruby/object:Team
+  attributes:
+    id: 24
+    city: San Diego
+    name: Chargers
+    created_at: 2012-08-29 05:59:08.512533 Z
+    updated_at: 2012-08-29 05:59:08.512533 Z
+    color: 05173C
+    abbr: SD
+- !ruby/object:Team
+  attributes:
+    id: 25
+    city: San Francisco
+    name: 49ers
+    created_at: 2012-08-29 05:59:08.522367 Z
+    updated_at: 2012-08-29 05:59:08.522367 Z
+    color: "940029"
+    abbr: SF
+- !ruby/object:Team
+  attributes:
+    id: 26
+    city: Seattle
+    name: Seahawks
+    created_at: 2012-08-29 05:59:08.534371 Z
+    updated_at: 2012-08-29 05:59:08.534371 Z
+    color: 030F1F
+    abbr: SEA
+- !ruby/object:Team
+  attributes:
+    id: 27
+    city: Tampa Bay
+    name: Buccaneers
+    created_at: 2012-08-29 05:59:08.550315 Z
+    updated_at: 2012-08-29 05:59:08.550315 Z
+    color: 665C50
+    abbr: TB
+- !ruby/object:Team
+  attributes:
+    id: 28
+    city: Washington
+    name: Redskins
+    created_at: 2012-08-29 05:59:08.560266 Z
+    updated_at: 2012-08-29 05:59:08.560266 Z
+    color: 8C001A
+    abbr: WSH
+- !ruby/object:Team
+  attributes:
+    id: 29
+    city: Carolina
+    name: Panthers
+    created_at: 2012-08-29 05:59:08.597699 Z
+    updated_at: 2012-08-29 05:59:08.597699 Z
+    color: 0097C6
+    abbr: CAR
+- !ruby/object:Team
+  attributes:
+    id: 30
+    city: Jacksonville
+    name: Jaguars
+    created_at: 2012-08-29 05:59:08.644414 Z
+    updated_at: 2012-08-29 05:59:08.644414 Z
+    color: 00839C
+    abbr: JAC
+- !ruby/object:Team
+  attributes:
+    id: 31
+    city: Baltimore
+    name: Ravens
+    created_at: 2012-08-29 05:59:08.681703 Z
+    updated_at: 2012-08-29 05:59:08.681703 Z
+    color: 2B025B
+    abbr: BAL
+- !ruby/object:Team
+  attributes:
+    id: 32
+    city: Houston
+    name: Texans
+    created_at: 2012-08-29 05:59:08.690059 Z
+    updated_at: 2012-08-29 05:59:08.690059 Z
+    color: 00133F
+    abbr: HOU

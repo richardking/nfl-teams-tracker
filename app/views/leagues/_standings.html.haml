@@ -15,7 +15,8 @@
       %td= ul.wins
       %td= ul.losses
       %td{style:"text-align:center"}
-        - if ul.wins_in_week(@previous_week_id) < 2
-          = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}", class: "has-tip tip-right", title: "LOL"
-        - else
-          = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}"
+        - if @previous_week_id
+          - if ul.wins_in_week(@previous_week_id) < 2
+            = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}", class: "has-tip tip-right", title: "LOL"
+          - else
+            = content_tag :span, "#{ul.wins_in_week(@previous_week_id)}-#{ul.losses_in_week(@previous_week_id)}"

@@ -7,7 +7,7 @@ class League < ActiveRecord::Base
 
 
   def self.find_active_week
-    Week.all.each_with_index do |w, index|
+    Week.where(:season => 2013).each_with_index do |w, index|
       diff = w.end_of_week - Time.now
       return (index+1) if diff > 0
     end

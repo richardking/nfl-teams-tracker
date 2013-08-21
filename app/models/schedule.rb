@@ -11,7 +11,7 @@ class Schedule < ActiveRecord::Base
 
   class << self
     def import
-      start_of_season = DateTime.parse('03/09/2013')
+      start_of_season = DateTime.parse('04/09/2013')
       json = HTTParty.get("http://data.t.bleacherreport.com/NFL_Reg/Football/2013/schedule.json")
       json['games'].each do |game|
         week_num = ((DateTime.parse(game['startTime']).to_i - start_of_season.to_i) / 1.week) + 1

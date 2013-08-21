@@ -1,6 +1,4 @@
 class Team < ActiveRecord::Base
-  has_many :home_games, :foreign_key => :home_team_id, :class_name => "Schedule"
-  has_many :away_games, :foreign_key => :away_team_id, :class_name => "Schedule"
   has_many :picks
   has_many :records
 
@@ -18,6 +16,14 @@ class Team < ActiveRecord::Base
 
   def full_name
     "#{city} #{name} (#{wins(2013)}-#{losses(2013)})"
+  end
+
+  def home_games(season=2013)
+    Schedule.where("home_team_id = ? AND week_id in (?)", id, Week.where(:season => season).map(&:id))
+  end
+
+  def away_games(season=2013)
+    Schedule.where("away_team_id = ? AND week_id in (?)", id, Week.where(:season => season).map(&:id))
   end
 
   def bye_week

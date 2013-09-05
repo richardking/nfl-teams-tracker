@@ -1,4 +1,4 @@
-%span{:class => ("locked" if p.team.this_week_locked?(params[:id]) )}
+%span{:class => ("locked" if p.team.this_week_locked?(League.find_active_week_id) )}
   - if p.started?(params[:id])
     = link_to "Starting", league_weekly_actives_path(weekly_active: p.weekly_active(params[:id])), method: :delete, class: "starting"
   - else

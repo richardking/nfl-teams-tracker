@@ -19,7 +19,7 @@ class WeeksController < ApplicationController
     @current_user_picks = current_user.find_picks(params[:league_id])
     @home_team_ids = Array.new
     @away_team_ids = Array.new
-    Schedule.find_all_by_week_id(Week.find_by_num(params[:id])).each do |s|
+    Schedule.find_all_by_week_id(League.find_active_week_id).each do |s|
       @home_team_ids << s.home_team_id
       @away_team_ids << s.away_team_id
     end

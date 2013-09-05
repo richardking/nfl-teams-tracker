@@ -13,10 +13,10 @@
             = render :partial => 'start_or_bench', locals: {p: p}
           %td @
           %td.opponent
-            = p.team.this_weeks_opponent(params[:id]).name
+            = p.team.this_weeks_opponent(League.find_active_week_id).name
         -elsif @home_team_ids.include?(p.team.id)
           %td.opponent
-            = p.team.this_weeks_opponent(params[:id]).name
+            = p.team.this_weeks_opponent(League.find_active_week_id).name
           %td @
           %td
             = p.team.name

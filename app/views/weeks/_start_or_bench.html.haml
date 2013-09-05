@@ -1,5 +1,5 @@
 %span{:class => ("locked" if p.team.this_week_locked?(League.find_active_week_id) )}
-  - if p.started?(params[:id])
-    = link_to "Starting", league_weekly_actives_path(weekly_active: p.weekly_active(params[:id])), method: :delete, class: "starting"
+  - if p.started?(League.find_active_week_id)
+    = link_to "Starting", league_weekly_actives_path(weekly_active: p.weekly_active(League.find_active_week_id), method: :delete, class: "starting"
   - else
-    = link_to "On Bench", new_league_weekly_actives_path(params[:league_id], params[:id], pick_id: p.id, user_id: current_user.id), class: "benched"
+    = link_to "On Bench", new_league_weekly_actives_path(params[:league_id], League.find_active_week_id, pick_id: p.id, user_id: current_user.id), class: "benched"

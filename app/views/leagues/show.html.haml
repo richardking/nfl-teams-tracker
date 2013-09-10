@@ -28,8 +28,6 @@
                   - if WeeklyActive.league_week(params[:id], @active_week_id).map{|w| w.team.id}.include?(game.away_team.id)
                     %span{ :class => ("owner" if game.away_team.picks.map{|p| p.users_league_id}.include?(@users_league.id))}
                       = UsersLeague.find_all_by_league_id(params[:id]).select{|ul| ul.picks.map(&:team_id).include?(game.away_team.id)}.first.try(:user).try(:first_name)
-                  - else
-                    asdf
                 %td
                   = game.away_team.full_name
                 %td @

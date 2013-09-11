@@ -32,44 +32,7 @@ class LeaguesController < ApplicationController
   end
 
   def parse
-    @scores = Array.new
-    @schedule_errors = Array.new
-    @scores_entered = Array.new
-    Rails.logger.debug "Parse"
-    feed = Feedzirra::Feed.fetch_and_parse("http://feeds.feedburner.com/mpiii/nfl")
-    feed.entries.each do |entry|
-      entry.title = entry.title.gsub("NY Giants", "NYG").gsub("NY Jets", "NYJ")
-      Rails.logger.debug entry.title
-      if /(FINAL)/.match(entry.title)
-        Rails.logger.debug entry.title
-        @scores << entry.title.gsub(" (FINAL)", "")
-      end
-    end
-    Rails.logger.debug @scores
-    @scores.each do |score|
-      teams = score.split("   ")
-      Rails.logger.debug teams
-      teams.map! do |team|
-        t = team.match(/(\D+) (\d+)/)
-        [t[1], t[2]]
-      end
-      teams.flatten!
-      Rails.logger.debug teams
-      away_team_id = Team.find_by_city(teams[0]).try(:id) || Team.find_by_abbr(teams[0]).id
-      home_team_id = Team.find_by_city(teams[2]).try(:id) || Team.find_by_abbr(teams[2]).id
-      Rails.logger.debug away_team_id
-      Rails.logger.debug home_team_id
-      schedule_id = Schedule.find_by_away_team_id_and_home_team_id(away_team_id, home_team_id).id
-      unless Score.find_by_schedule_id(schedule_id)
-        if score = Score.create(schedule_id: schedule_id, away_team_score: teams[1], home_team_score: teams[3])
-          Rails.logger.debug score
-          @scores_entered << score.id
-          Schedule.find(schedule_id).update_attribute(:processed, true)
-        else
-          @schedule_errors << schedule_id
-        end
-      end
-    end
+    Score.parse
   end
 
 end

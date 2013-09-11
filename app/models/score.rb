@@ -7,6 +7,7 @@ class Score < ActiveRecord::Base
 
   class << self
     def parse
+      @schedule_errors = []
       @scores_entered = []
       json = HTTParty.get("http://data.t.bleacherreport.com/NFL_Reg/Football/2013/schedule.json")
       json['games'].each do |game|
@@ -37,6 +38,7 @@ class Score < ActiveRecord::Base
       end
 
       puts "ERRORS: #{@schedule_errors.inspect}"
+      [@scores_entered, @schedule_errors]
     end
   end
 

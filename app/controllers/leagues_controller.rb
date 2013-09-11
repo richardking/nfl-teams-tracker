@@ -32,7 +32,7 @@ class LeaguesController < ApplicationController
   end
 
   def parse
-    Score.parse
+    @scores_entered, @schedule_errors = Score.parse
   end
 
 end

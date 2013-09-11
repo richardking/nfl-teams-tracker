@@ -28,7 +28,7 @@ class Score < ActiveRecord::Base
           next
         end
 
-        if score = Score.create(schedule_id: @schedule.id, away_team_score: @home_team[1], home_team_score: @away_team[1])
+        if score = Score.create(schedule_id: @schedule.id, away_team_score: @away_team[1], home_team_score: @home_team[1])
           @scores_entered << score.id
           Schedule.find(@schedule.id).update_attribute(:processed, true)
         else

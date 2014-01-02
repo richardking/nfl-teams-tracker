@@ -11,7 +11,7 @@ class League < ActiveRecord::Base
       diff = w.end_of_week - Time.now
       return w.id if diff > 0
     end
-    return Week.where(:season => 2013, :num => 17).id
+    return Week.where(:season => 2013, :num => 17).first.id
   end
 
 end

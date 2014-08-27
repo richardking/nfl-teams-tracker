@@ -15,14 +15,14 @@ class Team < ActiveRecord::Base
   end
 
   def full_name
-    "#{city} #{name} (#{wins(2013)}-#{losses(2013)})"
+    "#{city} #{name} (#{wins(2014)}-#{losses(2014)})"
   end
 
-  def home_games(season=2013)
+  def home_games(season=2014)
     Schedule.where("home_team_id = ? AND week_id in (?)", id, Week.where(:season => season).map(&:id))
   end
 
-  def away_games(season=2013)
+  def away_games(season=2014)
     Schedule.where("away_team_id = ? AND week_id in (?)", id, Week.where(:season => season).map(&:id))
   end
 

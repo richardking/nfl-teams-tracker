@@ -49,7 +49,7 @@ class Score < ActiveRecord::Base
       home_team_id = self.schedule.home_team_id
       away_team_id = self.schedule.away_team_id
       unless Schedule.find(self.schedule_id).processed
-        record = Record.find_or_initialize_by_team_id_and_season(home_team_id, 2013)
+        record = Record.find_or_initialize_by_team_id_and_season(home_team_id, 2014)
         record.update_attribute(:wins, (record.wins + 1))
         record.save
       end
@@ -62,7 +62,7 @@ class Score < ActiveRecord::Base
       end
       unless Schedule.find(self.schedule_id).processed
         Schedule.find(self.schedule_id).update_attribute(:processed, true)
-        record = Record.find_or_initialize_by_team_id_and_season(away_team_id, 2013)
+        record = Record.find_or_initialize_by_team_id_and_season(away_team_id, 2014)
         record.update_attribute(:losses, (record.losses + 1))
         record.save
       end
@@ -77,7 +77,7 @@ class Score < ActiveRecord::Base
       home_team_id = self.schedule.home_team_id
       away_team_id = self.schedule.away_team_id
       unless Schedule.find(self.schedule_id).processed
-        record = Record.find_or_initialize_by_team_id_and_season(home_team_id, 2013)
+        record = Record.find_or_initialize_by_team_id_and_season(home_team_id, 2014)
         record.update_attribute(:losses, (record.losses + 1))
         record.save
       end
@@ -90,7 +90,7 @@ class Score < ActiveRecord::Base
       end
       unless Schedule.find(self.schedule_id).processed
         Schedule.find(self.schedule_id).update_attribute(:processed, true)
-        record = Record.find_or_initialize_by_team_id_and_season(away_team_id, 2013)
+        record = Record.find_or_initialize_by_team_id_and_season(away_team_id, 2014)
         record.update_attribute(:wins, (record.wins + 1))
         record.save
       end

@@ -9,7 +9,7 @@ class Score < ActiveRecord::Base
     def parse
       @schedule_errors = []
       @scores_entered = []
-      json = HTTParty.get("http://data.t.bleacherreport.com/NFL_Reg/Football/2013/schedule.json")
+      json = HTTParty.get("http://data.t.bleacherreport.com/NFL_Reg/Football/NFL_2014/schedule.json")
       json['games'].each do |game|
         next unless game['state']['gameStatus'] == 'closed'
 
